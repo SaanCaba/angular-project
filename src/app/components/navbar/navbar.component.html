@@ -1,0 +1,45 @@
+<div class="show-mobile">
+    <div>
+        <button (click)="toggleMenu()" class="btn-menu">
+            <img width="40" src="https://cdn-icons-png.flaticon.com/512/149/149719.png" alt="menu">
+        </button>
+        <a href="">
+            <img width="40" src="https://cdn-icons-png.flaticon.com/512/1345/1345040.png" alt="logo">
+        </a>
+        <span>Store!</span>
+        <a href="">
+            <img width="40" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="logo">
+        </a>
+    </div>
+    <div class="side-menu" [ngClass]="{active: showMenu}">
+        <button class="btnInactive" (click)="toggleMenu()" [ngClass]="{btnActive: showMenu}" >X</button>
+        <ul class="ulInactive" [ngClass]="{ulActive: showMenu}">
+            <li>All</li>
+            <li>Clothes</li>
+            <li>Electronics</li>
+        </ul>
+    </div>
+</div>
+<div class="hide-mobile">
+    <div>
+        <nav class="cont-nav">
+            <a href="">
+                <img width="50" src="https://cdn-icons-png.flaticon.com/512/1345/1345040.png" alt="logo">
+            </a>
+            <ul class="items">
+                <li>All</li>
+                <li>Clothes</li>
+                <li>Electronics</li>
+            </ul>
+        </nav>
+        <div class="info">
+            <div class="account">saantyc12.caballero@gmail.com</div>
+            <div>
+                <a href="">
+                <img width="50" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="logo">
+                </a>
+              <span>{{counter}}</span>  
+         </div>
+        </div>
+    </div>
+</div>

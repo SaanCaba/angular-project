@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@import url(./styles/reset.css);
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+*{
+    font-family: 'Quicksand', sans-serif;
+}
+
+.product-cont > app-product > app-img > .img-product{
+    border-radius: 10px;
+    border: 2px solid rgb(207, 147, 147);
+}

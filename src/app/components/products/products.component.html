@@ -1,0 +1,29 @@
+<app-cart [product]="cartProduct" [price]="price" *ngFor="let cartProduct of myCartProducts"></app-cart>
+<p>
+    test : {{'hola' | replaceV}}
+    test2: {{'SAAnticdOce' | replaceV}}
+</p>
+<p>
+    Today : {{today | date: 'short'}} 
+</p>
+<p>
+    Today2 : {{today | timeAgo}}
+</p>
+<p>
+    {{'holaA' | uppercase}}
+</p>
+<p>
+    {{'saantyc' | reverse }}
+</p>
+<div class="product-cont">
+    <!-- <p>{{myCartProducts.length}}</p>
+    <p>Price: ${{price}}</p> -->
+<!-- el segundo product, es el que se itera del for. es el objeto del producto. -->
+
+<div *ngIf="products.length === 0">
+    <h1>
+        Loading...
+    </h1>
+</div>   
+<app-product (addedProduct)="onAddToCart($event)" [product]="product" *ngFor="let product of products"></app-product>
+</div>

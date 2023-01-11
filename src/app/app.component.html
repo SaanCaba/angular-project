@@ -1,0 +1,120 @@
+<app-navbar></app-navbar>
+<app-products></app-products>
+
+<!-- <p>
+  <input type="text" [(ngModel)]="imgParent">
+  <input type="text" [(ngModel)]="prueba">
+</p>
+<button (click)="toogleImg()">Toogle IMG</button>
+<p>{{showIMG}}</p> -->
+<!-- <app-img *ngIf="showIMG" (loaded)="onLoaded($event)" [img]="imgParent" [tested]="prueba"></app-img> -->
+<!-- FORMULARIO -->
+<!-- <form (ngSubmit)="onRegister()" #myForm="ngForm">
+  <div class="cont-form-inputs">
+    <div class="cont-form-column-inputs">
+      <label >Nombre:</label>
+        <input style="padding: 10px; border:none" #nameInput="ngModel" type="text" name="name" required id="name" class="input-name" [(ngModel)]="register.name" placeholder="Name...">
+        <p class="inputNameError" [class.invalidName]="register.name.length > 0 && register.name.length <= 3">El Nombre debe ser mayor a 3 letras!</p>
+        <p class="inputNameValid" [class.validName]="register.name.length > 3">El nombre es válido!</p>
+      <label >Password:</label>
+       <input  style="padding: 10px; border:none" type="password" name="password" required id="password" class="input-pass" [(ngModel)]="register.password" placeholder="Password...">
+        <p class="inp-pss" [class.invalidPassword]="register.password.length > 0 && register.password.length < 8">La contraseña debe ser mayor a 8 letras</p>
+        <p  class="inp-pss" [class.validPassword]="register.password.length >= 8">Contraseña Correcta!</p>
+        <label>Email:</label>
+      <input style="padding: 10px; border:none" type="email" name="email" required id="email" class="input-email" [(ngModel)]="register.email" placeholder="Email...">
+      <p class="email-p" [class.invalidEmail]="!register.email.includes('@') && register.email.length > 0">Falta el @</p>
+      <p class="email-p" [class.validEmail]="register.email.includes('@') && register.email.length > 0">Email válido!</p>
+    </div>
+  </div>
+  <div class="cont-btn">
+    <button [disabled]="myForm.invalid" type="submit">Register</button>
+  </div>
+</form> -->
+
+
+
+<!-- <input type="text" required #nameInput4="ngModel" [(ngModel)]="person.nombre">
+
+<hr class="line-error"
+[ngClass]="{
+  'validHr':nameInput4.valid,
+  'invalidHr': nameInput4.invalid
+}"
+
+/>
+
+<input type="text" required #nameInput2="ngModel" [(ngModel)]="person.nombre">
+<p class="message-error" [class.invalidName]="nameInput2.invalid">
+  El campo es requerido!
+</p>
+<label >Nombre</label>
+<input type="text" required #nameInput3="ngModel" [(ngModel)]="person.nombre">
+<p [style.font-style]="nameInput3.invalid ? 'italic' : 'normal' ">
+  TEXTO TEXTOOO
+</p>
+<hr/>
+<input type="text" [(ngModel)]="person.nombre">
+<span>{{person.nombre}}</span>
+<div [ngSwitch]="person.nombre">
+<p *ngSwitchCase="person.nombre === 'santiago'">santiago</p>
+<p *ngSwitchCase="person.nombre === 'pepe'">PEPE</p>
+<p *ngSwitchCase="person.nombre === 'pepin'">pepin</p>
+<p>no hay match</p>
+</div>
+<hr/>
+<div class="product-grid">
+    <div  *ngFor="let product of products">
+      <img class="img-product" [src]="product.img" alt="image">
+      <span class="price">${{product.price}}</span>
+      <p class="name">{{product.name}}</p>
+    </div>
+</div>
+<h1>ngFor</h1>
+<input [(ngModel)]="newName" type="text">
+<button (click)="addName()">Add name</button>
+<ul>
+  <li *ngFor="let name of nombres; index as i">
+  {{i + 1}}  {{name}} 
+  <button (click)="deleteName(i)" style="color: white; background-color: red; padding: 6px; border: none; border-radius: 50%;">X</button>
+  </li>
+</ul>
+<hr/>
+<h1>ngIF</h1>
+<p *ngIf="person.nombre === 'santiago'; else elseblock">Content</p>
+<ng-template #elseblock>
+  <p>NO SOS santiago!</p>
+</ng-template>
+<hr/>
+<h1>ngModel</h1>
+<p>nombre {{person.nombre}}</p>
+<input type="text" required #nameInput="ngModel" [(ngModel)]="person.nombre">
+<p>Valid: {{nameInput.valid}} </p>
+<input type="text" required #ageInput="ngModel" [(ngModel)]="person.edad">
+<p>Valid: {{ageInput.valid}}</p>
+<hr/>
+<button (click)="pruebaE()" >LICK</button>
+<button>TOGGLE BUTTON</button>
+<h2>edad: {{edad}}</h2>
+<button (click)="incrementarEdad()">More Age</button>
+<hr/>
+<div class="box" (scroll)="onScroll($event)">
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero alias rerum porro laborum. Quidem, consectetur ipsum, odit repellat amet in possimus debitis quasi et error minus, accusamus fuga facilis reprehenderit?</p>
+</div>
+<input type="text" [value]="person.nombre" (keyup)="onInputName($event)">
+{{person.nombre}}
+<input type="text" (keyup.enter)="pruebaaa()">
+<hr/>
+
+
+<button [disabled]="btnDisabled">Enviar</button>
+<button (click)="toggleButton()" >TOGGLE BUTTON</button>
+
+<input type="text" [value]='person.nombre'>
+<progress max="100" [value]="edad"></progress>
+<img [src]="person.avatar" width="100" alt="">
+<hr/>
+
+<h1>{{'pepe'.repeat(4)}}</h1>
+<h2>{{ name }}</h2>
+<h2>{{ edad }}</h2>
+<img width="100" src="https://images.unsplash.com/photo-1672862817339-51ef2610a5d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1209&q=80" alt="image"> -->

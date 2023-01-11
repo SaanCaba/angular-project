@@ -1,0 +1,145 @@
+.show-mobile{
+    display: block;
+    box-shadow: 0px 2px 5px rgb(black, .2);
+    
+}
+
+.btn-menu{
+    background:none;
+    border: none;
+}
+
+.show-mobile .side-menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transform: translateX(-100%);
+    transition: all ease-out 0.2s;
+}
+
+.btnInactive{
+    display: none;
+}
+
+.show-mobile .btnActive{
+    display: unset !important;
+    padding: 5px;
+    background-color: rgb(237, 131, 131);
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    width: 100%;
+}
+
+.ulInactive{
+    display: none;
+}
+
+.show-mobile .side-menu .ulActive {
+    display: unset !important;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.show-mobile .side-menu.active{
+    transform: translateX(0%);
+    }
+
+.show-mobile > div {
+    background-color: rgba(94, 92, 92, 0.374);
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hide-mobile{
+    display: none;
+}
+
+@media screen and (min-width: 40em) and (max-width: 63.9em){
+   .show-mobile{
+    display: none;
+   }
+   .hide-mobile{
+    display: unset !important;
+    background-color: rgba(94, 92, 92, 0.374) !important;
+    }
+    .hide-mobile > div  {
+            position: sticky;
+            top: 0px;
+            width: 100%;
+            backdrop-filter: blur(1.5px);
+            padding: 1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+    }
+    .logo{
+     margin-right: 1em;
+    }
+    .cont-nav{
+        display: flex;
+        align-items: center;
+    }
+    .info{
+        display: flex;
+        align-items: center;
+    }
+    .items{
+        display: flex;
+        list-style: none;
+        gap: 10px;
+    }
+    .account{
+        margin-right: 19px;
+    }
+}
+
+/* web */
+@media screen and (min-width: 64em){
+    .show-mobile{
+        display: none;
+       }
+       .hide-mobile{
+        display: unset !important;
+        }
+        .hide-mobile > div  {
+        position: sticky;
+        top: 0px;
+        backdrop-filter: blur(1.5px);
+        padding: 1em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        .logo{
+         margin-right: 1em;
+        }
+        .cont-nav{
+            display: flex;
+            align-items: center;
+        }
+        .info{
+            display: flex;
+            align-items: center;
+        }
+        .items{
+            display: flex;
+            list-style: none;
+            gap: 10px;
+        }
+        .account{
+            margin-right: 19px;
+        }
+}
