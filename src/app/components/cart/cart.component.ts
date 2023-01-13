@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Product } from 'src/app/product.model';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,5 +14,15 @@ export class CartComponent {
     price : 0,
     description: ''
   }
-  @Input() price = 0
+  totalPrice:number = 0;
+  constructor(
+    private storeService: StoreService
+  ){
+    // this.totalPrice = this.storeService.totalPriceCart;
+  }
+  
+  ngOnInit(){
+    console.log(this.totalPrice)
+  }
+  
 }

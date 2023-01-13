@@ -1,5 +1,5 @@
-<app-cart [product]="cartProduct" [price]="price" *ngFor="let cartProduct of myCartProducts"></app-cart>
-<p>
+
+<!-- <p>
     test : {{'hola' | replaceV}}
     test2: {{'SAAnticdOce' | replaceV}}
 </p>
@@ -14,7 +14,7 @@
 </p>
 <p>
     {{'saantyc' | reverse }}
-</p>
+</p> -->
 <div class="product-cont">
     <!-- <p>{{myCartProducts.length}}</p>
     <p>Price: ${{price}}</p> -->
@@ -22,7 +22,7 @@
 
 <div *ngIf="products.length === 0">
     <h1>
-        Loading...
+        Loading... {{loading$}}
     </h1>
 </div>   
 <app-product (addedProduct)="onAddToCart($event)" [product]="product" *ngFor="let product of products"></app-product>

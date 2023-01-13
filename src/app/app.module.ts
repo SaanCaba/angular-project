@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'
@@ -14,6 +14,11 @@ import { ReversePipe } from './pipes/reverse.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { ReplaceVPipe } from './pipes/replace-v.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
+import { CartproductComponent } from './components/cartproduct/cartproduct.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { itemsReducer } from './state/reducer/items.reducer';
+import { ROOT_REDUCERS } from './state/app.state';
 
 @NgModule({
   declarations: [
@@ -27,12 +32,16 @@ import { HighlightDirective } from './directives/highlight.directive';
     TimeAgoPipe,
     ReplaceVPipe,
     HighlightDirective,
+    CartproductComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    // vinculamos el reducer con la store
+    StoreModule.forRoot(ROOT_REDUCERS),
+    StoreDevtoolsModule.instrument({ name: 'TEST' })
   ],
   providers: [],
   bootstrap: [AppComponent]
