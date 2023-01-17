@@ -1,16 +1,13 @@
-import { createSelector } from "@ngrx/store";
-import { AppState } from "../app.state";
-import { ItemState } from "../reducer/items.reducer";
+import {createSelector} from '@ngrx/store';
+import { ItemState } from 'src/app/models/item.state';
 
+import { AppState } from '../app.state';
 
-export const selectItemsFeature = (state: AppState) => state.items;
+//todo el estado
+export const selectCounterFeature = (state: AppState) => state.AppState;
 
-export const selectListItems = createSelector(
-    selectItemsFeature,
-    (state: ItemState) => state.items
-)
-
-export const selectLoading = createSelector(
-    selectItemsFeature,
-    (state: ItemState) => state.loading
+// me trae unicamente el counter
+export const selectItems = createSelector(
+    selectCounterFeature,
+    (state:ItemState) => state.items 
 )

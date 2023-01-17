@@ -1,23 +1,32 @@
-import { createReducer, on } from "@ngrx/store";
-import { Product } from "src/app/product.model";
-import { loadItems } from "../actions/items.actions";
-
-export interface ItemState{
-    loading: boolean,
-    items: ReadonlyArray<any>
-}
+import { state } from '@angular/animations';
+import { createReducer, on } from '@ngrx/store';
+import { ItemState } from 'src/app/models/item.state';
+import { increment, decrement,reset, addItems } from '../actions/items.actions';
 
 export const initialState : ItemState = {
-    loading: false,
     items: []
 };
 
-export const itemsReducer = createReducer(
-    initialState,
-    on(loadItems, (state) => {
-        return {
-            ...state,
-            loading: true
-        }
-    })
-)
+export const counterReducer = createReducer(
+  initialState,
+  on(addItems, (state, props) => {
+    console.log(props.items)
+    return {
+        ...state,
+        items: props.items
+    }
+
+  }),
+//   on(decrement, (state) => {
+//     return {
+//         ...state,
+//         counter: state.counter - 1
+//     }
+//   }),
+//   on(reset, (state) => {
+//     return{
+//         ...state,
+//         counter: 0
+//     }
+//   })
+);

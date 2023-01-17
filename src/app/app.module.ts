@@ -17,7 +17,6 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { CartproductComponent } from './components/cartproduct/cartproduct.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { itemsReducer } from './state/reducer/items.reducer';
 import { ROOT_REDUCERS } from './state/app.state';
 
 @NgModule({
