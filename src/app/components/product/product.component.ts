@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { StoreService } from 'src/app/services/store.service';
+import { addItemToCart, calculatePrice } from 'src/app/state/actions/items.actions';
 import { Product } from './product.model';
 
 @Component({
@@ -18,12 +20,14 @@ export class ProductComponent {
     description: ''
   }
   constructor(
-    private storeService : StoreService
+    private storeService : StoreService,
+    private store : Store
   ){
     
   }
   addProduct(){
-   this.storeService.addProduct(this.product)
+    this.store.dispatch(addItemToCart({item : this.product}))
+    this.store.dispatch(calculatePrice());
   }
   
 

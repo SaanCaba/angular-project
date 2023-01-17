@@ -1,0 +1,6 @@
+.productCart-cont{
+    height: 300px;
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+}

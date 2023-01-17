@@ -1,4 +1,13 @@
-    <div class="productCart-cont">
-        {{totalPrice}}
-        <app-cartproduct></app-cartproduct>
+    <div class="screen-cont">
+
+        <div class="productCart-cont">
+            <div class="cont-price">
+                ${{totalPrice$ | async | trunc}}
+            </div>
+        <div class="cart-product">
+            <div class="cart-col">
+                <app-cartproduct [product]="myCartProduct" *ngFor="let myCartProduct of myCartProducts$ | async"></app-cartproduct>
+            </div>
+        </div>
+    </div>
     </div>

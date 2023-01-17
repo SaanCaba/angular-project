@@ -1,6 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Product } from 'src/app/product.model';
 import { StoreService } from 'src/app/services/store.service';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/state/app.state';
+import { calculatePrice } from 'src/app/state/actions/items.actions';
+import { selectMyCartProducts, selectTotalPrice } from 'src/app/state/selectors/items.selector';
 
 @Component({
   selector: 'app-cart',
@@ -14,15 +19,20 @@ export class CartComponent {
     price : 0,
     description: ''
   }
-  totalPrice:number = 0;
+  totalPrice$ : Observable<any> = new Observable();
+  myCartProducts$ : Observable<any> = new Observable();
+
   constructor(
-    private storeService: StoreService
+    private storeService: StoreService,
+    private store : Store<AppState>
   ){
     // this.totalPrice = this.storeService.totalPriceCart;
   }
   
   ngOnInit(){
-    console.log(this.totalPrice)
+    this.store.dispatch(calculatePrice())
+    this.totalPrice$ = this.store.select(selectTotalPrice)
+    this.myCartProducts$ = this.store.select(selectMyCartProducts);
   }
   
 }

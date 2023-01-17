@@ -35,10 +35,9 @@
         <div class="info">
             <div class="account">saantyc12.caballero@gmail.com</div>
             <div>
-                <a href="">
-                <img width="50" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="logo">
-                </a>
+                <img (click)="openCart()" width="50" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="logo">
               <span>{{counter}}</span>  
+              <button (click)="callParent()">Greet</button>
          </div>
         </div>
     </div>

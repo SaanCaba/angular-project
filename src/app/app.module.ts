@@ -18,6 +18,7 @@ import { CartproductComponent } from './components/cartproduct/cartproduct.compo
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ROOT_REDUCERS } from './state/app.state';
+import { TruncPipe } from './pipes/trunc.pipe';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ROOT_REDUCERS } from './state/app.state';
     ReplaceVPipe,
     HighlightDirective,
     CartproductComponent,
+    TruncPipe,
   ],
   imports: [
     BrowserModule,

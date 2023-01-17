@@ -7,6 +7,15 @@ export const addItems = createAction(
     props<{items: Product[]}>()
 )
 
+export const calculatePrice = createAction(
+    '[Cart Component] Get total Price'
+)
+
+export const addItemToCart = createAction(
+    '[Product Component] Add Item to Cart',
+    props<{item: Product}>()
+)
+
 export const increment = createAction(
     '[Counter Component] Increment',
     );

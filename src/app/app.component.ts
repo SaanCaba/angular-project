@@ -1,5 +1,6 @@
 import { Component, Output } from '@angular/core';
 import { Product } from './product.model';
+import { StoreService } from './services/store.service';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +8,26 @@ import { Product } from './product.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  @Output() totalInCart = 0
   imgParent = '../assets/images/greenshoes.png'
   prueba=''
   showIMG = true
+  showCart: boolean = this.storeService.openCart
   onLoaded(img : string){
     console.log('loaded padre!', img)
   }
+  openCart: boolean = false;
+  constructor(
+    private storeService : StoreService
+  ){
 
+  }
+  ngOnInit():void{
+    // console.log(this.storeService.clickCart())
+    console.log(this.showCart)
+  }
+  clickCart(value: any){
+    console.log(value);
+  }
   register = {
     name : '',
     email: '',
@@ -68,5 +81,8 @@ export class AppComponent {
 
   toogleImg(){
     this.showIMG = !this.showIMG
+  }
+  greet(){
+    alert("holaa")
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { StoreService } from 'src/app/services/store.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  @Output() cart = new EventEmitter<boolean>()
   showMenu = false;
   counter = 0;
   constructor(
@@ -18,9 +19,21 @@ export class NavbarComponent {
     this.storeService.myCart$.subscribe(products => {
       this.counter = products.length
     })
+    console.log('pepe')
   }
   toggleMenu(){
     console.log(this.showMenu)
     this.showMenu = !this.showMenu
+  }
+  openCart(){
+    this.showMenu = this.storeService.clickCart();
+    // console.log(this.cart)
+    // this.cart.emit(this.showMenu)
+    // console.log(this.cart.emit(this.showMenu))
+    console.log(this.showMenu)
+  }
+  callParent(){
+    alert("Send info to parent")
+    this.cart.emit()
   }
 }

@@ -16,7 +16,7 @@ import { Product } from '../product/product.model';
 export class ProductsComponent {
   items$: Observable<any> = new Observable()
   myCartProducts : Product[] = [];
-  price: number = 0
+  price!: number;
   products : Product[] = []
   today  = new Date();
   date = new Date(2021, 1 ,21)
@@ -33,6 +33,7 @@ export class ProductsComponent {
   }
   ngOnInit(): void{
     // se dispara una acción!
+    this.price = this.storeService.getTotal();
     this.items$ = this.store.select(selectItems)
     this.productsService.getAllProducts()
     .subscribe(data => {
@@ -46,6 +47,5 @@ export class ProductsComponent {
   onAddToCart(product : Product){
     console.log(product)
     this.storeService.addProduct(product)
-    this.price = this.storeService.getTotal()
   }
 }
