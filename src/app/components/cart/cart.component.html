@@ -1,8 +1,9 @@
     <div class="screen-cont">
 
         <div class="productCart-cont">
+            <button (click)="closeCart()" class="btn-close-cart">X</button>
             <div class="cont-price">
-                ${{totalPrice$ | async | trunc}}
+               Total: ${{totalPrice$ | async | trunc}}
             </div>
         <div class="cart-product">
             <div class="cart-col">

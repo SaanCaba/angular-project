@@ -11,7 +11,7 @@ export class AppComponent {
   imgParent = '../assets/images/greenshoes.png'
   prueba=''
   showIMG = true
-  showCart: boolean = this.storeService.openCart
+  showCart: boolean = false;
   onLoaded(img : string){
     console.log('loaded padre!', img)
   }
@@ -26,7 +26,7 @@ export class AppComponent {
     console.log(this.showCart)
   }
   clickCart(value: any){
-    console.log(value);
+    this.showCart = value;
   }
   register = {
     name : '',
@@ -45,7 +45,7 @@ export class AppComponent {
   }
   nombres : string[] = ['santiago','pepe','axel', 'daniel', 'simba']
   pruebaE(){
-    return alert('jola')
+    return console.log('first')
   }
   toggleButton(){
     if(this.btnDisabled === true){
@@ -82,7 +82,5 @@ export class AppComponent {
   toogleImg(){
     this.showIMG = !this.showIMG
   }
-  greet(){
-    alert("holaa")
-  }
+
 }

@@ -2,7 +2,17 @@
     position: fixed;
     height: 100%;
     width: 100%;
-    backdrop-filter: brightness(30%);
+    /* backdrop-filter: brightness(30%); */
+}
+
+.btn-close-cart{
+    width: 100%;
+    background-color: rgb(227, 98, 98);
+    color:white;
+    border: none;
+    padding: 5px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .productCart-cont{
@@ -10,15 +20,17 @@
     width: 50%;
     display: block;
     margin: auto;
-    background-color: rgba(255, 255, 0, 0.25);
+    background-color: rgba(40, 40, 38, 0.527);
     overflow-x: hidden;
-    overflow-y: scroll;
     backdrop-filter: blur(2px);
 }
 
 .cont-price{
     display: flex;
+    margin: 10px;
     justify-content: center;
+    color: rgb(156, 246, 156);
+    font-size: 20px;
 }
 
 .cart-product{

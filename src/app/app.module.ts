@@ -19,6 +19,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ROOT_REDUCERS } from './state/app.state';
 import { TruncPipe } from './pipes/trunc.pipe';
+import { SlicePipe } from './pipes/slice.pipe';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { TruncPipe } from './pipes/trunc.pipe';
     HighlightDirective,
     CartproductComponent,
     TruncPipe,
+    SlicePipe,
   ],
   imports: [
     BrowserModule,

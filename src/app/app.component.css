@@ -122,3 +122,12 @@
         grid-gap: 10px;
     }
 }
+
+.cart-view{
+    display: none ;
+}
+
+.showCart{
+    display: unset !important;
+}
+

@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/product.model';
 import { StoreService } from 'src/app/services/store.service';
+import { AppState } from 'src/app/state/app.state';
+import { selectMyCartProducts } from 'src/app/state/selectors/items.selector';
 
 @Component({
   selector: 'app-navbar',
@@ -9,17 +14,20 @@ import { StoreService } from 'src/app/services/store.service';
 export class NavbarComponent {
   @Output() cart = new EventEmitter<boolean>()
   showMenu = false;
-  counter = 0;
+  counter: number = 0;
+
   constructor(
-    private storeService : StoreService
+    private storeService : StoreService,
+    private store: Store<AppState>
   ){
 
   }
   ngOnInit():void{
-    this.storeService.myCart$.subscribe(products => {
-      this.counter = products.length
-    })
-    console.log('pepe')
+   let pepe  = this.store.select(selectMyCartProducts);
+   pepe.subscribe(products   => {
+    this.counter = products.length;
+   });
+   console.log(pepe)
   }
   toggleMenu(){
     console.log(this.showMenu)
@@ -27,13 +35,7 @@ export class NavbarComponent {
   }
   openCart(){
     this.showMenu = this.storeService.clickCart();
-    // console.log(this.cart)
-    // this.cart.emit(this.showMenu)
-    // console.log(this.cart.emit(this.showMenu))
-    console.log(this.showMenu)
+    this.cart.emit(this.showMenu)
   }
-  callParent(){
-    alert("Send info to parent")
-    this.cart.emit()
-  }
+
 }

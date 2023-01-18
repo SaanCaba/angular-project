@@ -1,6 +1,6 @@
 <app-navbar (cart)="clickCart($event)"></app-navbar>
-<div >
-  <app-cart></app-cart>
+<div class="cart-view" [ngClass]="{showCart: showCart}">
+  <app-cart (cart)="clickCart($event)"></app-cart>
 </div>
 <app-products></app-products>
 
