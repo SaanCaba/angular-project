@@ -7,9 +7,10 @@
             <img width="40" src="https://cdn-icons-png.flaticon.com/512/1345/1345040.png" alt="logo">
         </a>
         <span>Store!</span>
-        <a href="">
-            <img width="40" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="logo">
-        </a>
+            <div>
+                    <img (click)="openCart()" width="40" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="logo">
+                <span>{{counter}}</span>  
+            </div>
     </div>
     <div class="side-menu" [ngClass]="{active: showMenu}">
         <button class="btnInactive" (click)="toggleMenu()" [ngClass]="{btnActive: showMenu}" >X</button>

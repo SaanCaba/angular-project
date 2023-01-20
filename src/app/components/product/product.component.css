@@ -6,3 +6,58 @@ h2{
     margin: 0;
 }
 
+.btn-cart{
+    border: none;
+    color: white;
+    font-weight: 800;
+    background-color: rgb(104, 141, 104);
+    transition: 500ms ease-in;
+    padding: 8px;
+    border-radius: 3px 3px 0px 0px;
+    cursor: pointer;
+}
+
+.btn-cart:hover{
+    background-color: rgb(52, 63, 52);
+}
+
+.cont-product{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    transition: 500ms ease-in;
+    box-shadow: 3px 2px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 3px 2px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+.cont-product:hover{
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);    
+}
+
+.cont-img-product{
+    display: flex;
+    justify-content: center;
+}
+
+.cont-product-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.cont-product-col p{
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+.cont-btn-product{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+

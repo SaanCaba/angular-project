@@ -26,13 +26,8 @@
     </h1>
 </div>    -->
 
-<div *ngIf="items$ === null || items$ === undefined; else elseblock" >
-    Cargando...
-</div>
-<ng-template #elseblock>
+
     <app-product (addedProduct)="onAddToCart($event)" [product]="item" *ngFor="let item of items$ | async"></app-product>
-  </ng-template>
 
 </div>
-<button (click)="addToCount()"></button>
 <!-- {{counter$ | async }} -->

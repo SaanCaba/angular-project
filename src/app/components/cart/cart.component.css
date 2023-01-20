@@ -17,7 +17,7 @@
 
 .productCart-cont{
     height: 100%;
-    width: 50%;
+    width: 100%;
     display: block;
     margin: auto;
     background-color: rgba(40, 40, 38, 0.527);
@@ -41,4 +41,10 @@
 .cart-col{
     display: flex;
     flex-direction: column;
+}
+
+@media screen and (min-width: 64em){
+    .productCart-cont{
+        width: 50%;
+    }
 }

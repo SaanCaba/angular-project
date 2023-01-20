@@ -13,8 +13,9 @@ import { selectMyCartProducts } from 'src/app/state/selectors/items.selector';
 })
 export class NavbarComponent {
   @Output() cart = new EventEmitter<boolean>()
-  showMenu = false;
+  showMenu:boolean = false;
   counter: number = 0;
+  showCart: boolean = false;
 
   constructor(
     private storeService : StoreService,
@@ -34,8 +35,8 @@ export class NavbarComponent {
     this.showMenu = !this.showMenu
   }
   openCart(){
-    this.showMenu = this.storeService.clickCart();
-    this.cart.emit(this.showMenu)
+    this.showCart = this.storeService.clickCart();
+    this.cart.emit(this.showCart)
   }
 
 }
