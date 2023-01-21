@@ -1,11 +1,39 @@
 .productCart-cont{
-    height: 300px;
+    height: 330px;
+    margin-top: 10px;
     width: min-content;
     display: flex;
     flex-direction: column;
 }
 
 .productCart-cont h2{
+    width: 100%;
     color: white;
     font-weight: bold;
+}
+
+.cartproduct-img{
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.cont-btn-amount{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    
+}
+.cont-btn-amount button{
+    width: 30px;
+    background-color: rgb(195, 232, 130);
+    border: none;
+    font-weight: bold;
+}
+
+.cont-btn-amount span{
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
 }

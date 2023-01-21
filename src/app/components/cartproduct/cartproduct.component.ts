@@ -13,4 +13,5 @@ export class CartproductComponent {
     image:'',
     description: ''
   }
+  amount :number = 1;
 }
