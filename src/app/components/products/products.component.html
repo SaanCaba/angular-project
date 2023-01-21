@@ -15,19 +15,22 @@
 <p>
     {{'saantyc' | reverse }}
 </p> -->
-<div class="product-cont">
-    <!-- <p>{{myCartProducts.length}}</p>
-    <p>Price: ${{price}}</p> -->
-<!-- el segundo product, es el que se itera del for. es el objeto del producto. -->
-
-<!-- <div *ngIf="products.length === 0">
-    <h1>
-        Loading... {{loading$}}
-    </h1>
-</div>    -->
-
-
-    <app-product (addedProduct)="onAddToCart($event)" [product]="item" *ngFor="let item of items$ | async"></app-product>
-
+<div *ngIf="x.length > 0">
+<app-product
+(addedProduct)="onAddToCart($event)"
+ [product]="item"
+ *ngFor="let item of items$ | async">
+</app-product>
 </div>
+<div *ngIf="x.length === 0">
+Cargando...
+</div>
+<!-- <div class="product-cont"  >
+    <app-product
+     (addedProduct)="onAddToCart($event)"
+      [product]="item"
+      *ngFor="let item of items$ | async">
+    </app-product>
+</div> -->
+
 <!-- {{counter$ | async }} -->

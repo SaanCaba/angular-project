@@ -16,14 +16,21 @@ export class ProductComponent {
   @Input() product : Product = {
     title:'',
     price: 0,
-    image:'',
-    description: ''
+    image:[],
+    description: '',
+    category:{
+      id: 0,
+      typeImg: '',
+      name:''
+    }
   }
   constructor(
     private storeService : StoreService,
     private store : Store
   ){
-    
+    console.log(this.product)
+  }
+  ngOnInit(){
   }
   addProduct(){
     this.store.dispatch(addItemToCart({item : this.product}))

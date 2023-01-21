@@ -16,13 +16,19 @@ export class ImgComponent  {
   }
 
  @Input() tested: string = ''
- @Input() productImg : string = ''
+ @Input() productImg : string = '';
  @Input() productAlt : string = ''
+
+ constructor(){
+  console.log(this.productImg)
+}
 
  @Output() loaded = new EventEmitter<string>() 
 //  counter = 0;
 //  counterFn: number | undefined;
-
+  ngOnInit(){
+    console.log(this.productImg)
+  }
   imageDefault = 'pepe'
 
   imgError(){

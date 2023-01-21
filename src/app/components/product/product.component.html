@@ -1,8 +1,8 @@
 <!-- <img width="200"[src]="product.image" alt=""> -->
-<div class="cont-product">
+<div  class="cont-product">
     <div class="cont-product-col">
         <div class="cont-img-product">
-            <app-img [productImg]="product.image" [productAlt]="product.title" ></app-img>
+            <app-img *ngIf="product.image.length !== 0"  [productImg]="product.image[0]" [productAlt]="product.title" ></app-img>
         </div>
     <div class="cont-product-col">
         <p>{{product.price | currency:'ARS'}}</p>
@@ -13,7 +13,7 @@
     <button class="btn-cart" (click)="addProduct()">Add Cart</button>
 </div>
     </div>
-</div>      
+</div> 
 
 
    

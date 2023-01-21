@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { ProductsService } from 'src/app/services/products.service';
 import { StoreService } from 'src/app/services/store.service';
 import { addItems, increment } from 'src/app/state/actions/items.actions';
@@ -16,28 +16,32 @@ import { Product } from '../product/product.model';
 export class ProductsComponent {
   items$: Observable<any> = new Observable()
   myCartProducts : Product[] = [];
-  price!: number;
-  products : Product[] = []
+  price$:Observable<any> = new Observable()
+  productsLoaded : boolean = false;
   today  = new Date();
   date = new Date(2021, 1 ,21)
-
+  x : any = [];
   constructor(
     private storeService: StoreService,
     private productsService : ProductsService,
     private store: Store<AppState>
   ){
-    this.myCartProducts = storeService.getShoppingCart()
+    this.myCartProducts = this.storeService.getShoppingCart()
   }
   addToCount(){
     this.store.dispatch(increment());
   }
   ngOnInit(): void{
-    // se dispara una acción!
-    this.price = this.storeService.getTotal();
-    this.items$ = this.store.select(selectItems)
+  
+  this.items$ = this.store.select(selectItems)
+  this.items$.subscribe(data => { 
+    this.x = data
+    return console.log(this.x)
+  })
+  // se dispara una acción!
+
     this.productsService.getAllProducts()
     .subscribe(data => {
-     this.products = data;
      this.store.dispatch(addItems(
       {items: data}
      ))
@@ -45,7 +49,7 @@ export class ProductsComponent {
   }
 
   onAddToCart(product : Product){
-    console.log(product)
+    // console.log(product)
     this.storeService.addProduct(product)
   }
 }

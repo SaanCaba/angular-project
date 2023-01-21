@@ -10,8 +10,13 @@ export class CartproductComponent {
   @Input() product : Product = {
     title:'',
     price: 0,
-    image:'',
-    description: ''
+    image:[],
+    description: '',
+    category: {
+      id:0,
+      name:'',
+      typeImg:''
+    }
   }
   amount :number = 1;
 }

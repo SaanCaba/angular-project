@@ -16,9 +16,14 @@ export class CartComponent {
   @Output() cart = new EventEmitter<boolean>()
   @Input() product: Product = {
     title :'',
-    image: '',
+    image: [],
     price : 0,
-    description: ''
+    description: '',
+    category: {
+      id:0,
+      name:'',
+      typeImg:''
+    }
   }
   totalPrice$ : Observable<any> = new Observable();
   myCartProducts$ : Observable<any> = new Observable();
@@ -33,9 +38,7 @@ export class CartComponent {
   ngOnInit(){
     this.store.dispatch(calculatePrice())
     this.totalPrice$ = this.store.select(selectTotalPrice)
-    console.log(this.myCartProducts$)
     this.myCartProducts$ = this.store.select(selectMyCartProducts);
-    console.log(this.myCartProducts$)
   }
 
   closeCart(){
