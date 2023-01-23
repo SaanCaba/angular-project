@@ -11,3 +11,29 @@
     border-radius: 10px;
     border: 2px solid rgb(207, 147, 147);
 }
+
+.load-spinner{
+    border: 3px solid rgba(209, 30, 30, 0.484);
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border-left-color: transparent ;
+    animation: spin 1s ease infinite;
+
+}
+
+.cont-spinner{
+    display: flex;
+    justify-content: center;
+    height: 70vh;
+    align-items: center;
+}
+
+@keyframes spin{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg)
+    }
+}

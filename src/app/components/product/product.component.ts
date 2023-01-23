@@ -41,7 +41,7 @@ export class ProductComponent {
   showDetailProduct(){
     console.log('pepe')
     this.showDetailProductB = !this.showDetailProductB;
-    this.showdetailP.emit({menu :this.showDetailProductB, id: this.product.id})
+    this.showdetailP.emit(this.product.id)
   }
   
 

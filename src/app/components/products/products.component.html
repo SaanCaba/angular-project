@@ -15,6 +15,9 @@
 <p>
     {{'saantyc' | reverse }}
 </p> -->
+<div *ngIf="products.length === 0" class="cont-spinner">
+   <div class="load-spinner"></div>
+</div>
 <div class="product-cont" >
     <app-product
     (showdetailP)="toggleProductDetail($event)"
@@ -24,36 +27,10 @@
     </app-product>
 </div>
 <div class="product-detail" [class.active]="showDetail">
-    <div *ngIf="productChoosen">
-        <button>Close</button>
-        <h1>{{productChoosen.title}}</h1>
-        <swiper
-        [slidesPerView]="1"
-        [spaceBetween]="10"
-        [navigation]="true"
-        >
-        <ng-template
-          *ngFor="let image of productChoosen.images"
-          swiperSlide
-        >
-          <img
-            class="product-image"
-            [src]="image"
-            [alt]="productChoosen.title"
-          />
-        </ng-template>
-        </swiper>
-        <p>{{productChoosen.description}}</p>
+    <div *ngIf="productChoosen" class="cont-detailproductscreen">
+        <button (click)="onCloseDetail()" class="btn-detail">Close</button>
+        <app-productdetail [productDetail]="productChoosen"></app-productdetail>
     </div>
 </div>
 
 
-<!-- <div class="product-cont"  >
-    <app-product
-     (addedProduct)="onAddToCart($event)"
-      [product]="item"
-      *ngFor="let item of items$ | async">
-    </app-product>
-</div> -->
-
-<!-- {{counter$ | async }} -->

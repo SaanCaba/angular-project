@@ -40,7 +40,6 @@ export class ProductsComponent {
       name:''
     }
   }
-  x : any = [];
   constructor(
     private storeService: StoreService,
     private productsService : ProductsService,
@@ -71,12 +70,16 @@ export class ProductsComponent {
     this.storeService.addProduct(product)
   }
 
-  toggleProductDetail(value: {menu: boolean, id: string}){
-    this.showDetail = value.menu;
-    this.productsService.getDetailOfProduct(value.id)
+  toggleProductDetail(value:string){
+    
+    this.productsService.getDetailOfProduct(value)
     .subscribe(data => 
       this.productChoosen = data
     )
+    this.onCloseDetail();
+  }
+  onCloseDetail(){
+    this.showDetail = !this.showDetail;
   }
 
 }

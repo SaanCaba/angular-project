@@ -1,0 +1,19 @@
+<h1 class="product-title-detail">{{productDetail.title}}</h1>
+        <swiper
+        [slidesPerView]="1"
+        [spaceBetween]="10"
+        [navigation]="true"
+        >
+        <ng-template
+          *ngFor="let image of productDetail.images"
+          swiperSlide
+        >
+          <img
+            class="product-image-detail"
+            [src]="image"
+            [alt]="productDetail.title"
+          />
+        </ng-template>
+        </swiper>
+            <p class="product-description-detail">{{productDetail.description}}</p>
+            <p class="price-detail">Price: ${{productDetail.price}}</p>

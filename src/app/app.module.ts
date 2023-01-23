@@ -21,6 +21,7 @@ import { ROOT_REDUCERS } from './state/app.state';
 import { TruncPipe } from './pipes/trunc.pipe';
 import { SlicePipe } from './pipes/slice.pipe';
 import { SwiperModule } from 'swiper/angular';
+import { ProductdetailComponent } from './components/productdetail/productdetail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import { SwiperModule } from 'swiper/angular';
     CartproductComponent,
     TruncPipe,
     SlicePipe,
+    ProductdetailComponent,
   ],
   imports: [
     BrowserModule,
