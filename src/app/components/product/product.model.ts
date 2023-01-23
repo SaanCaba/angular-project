@@ -9,6 +9,6 @@ export interface Product {
     description: string
     title:string
     price: number
-    image:string[];
+    images:Array<string>;
     category: CategoryProduct
 }

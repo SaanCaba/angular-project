@@ -15,6 +15,7 @@ import { Product } from '../product/product.model';
 })
 export class ProductsComponent {
   items$: Observable<any> = new Observable()
+  products: Product[] = [];
   myCartProducts : Product[] = [];
   price$:Observable<any> = new Observable()
   productsLoaded : boolean = false;
@@ -26,6 +27,7 @@ export class ProductsComponent {
     private productsService : ProductsService,
     private store: Store<AppState>
   ){
+    
     this.myCartProducts = this.storeService.getShoppingCart()
   }
   addToCount(){
@@ -33,18 +35,16 @@ export class ProductsComponent {
   }
   ngOnInit(): void{
   
-  this.items$ = this.store.select(selectItems)
-  this.items$.subscribe(data => { 
-    this.x = data
-    return console.log(this.x)
-  })
+  // this.items$ = this.store.select(selectItems)
+  
   // se dispara una acción!
 
     this.productsService.getAllProducts()
     .subscribe(data => {
-     this.store.dispatch(addItems(
-      {items: data}
-     ))
+     this.products = data;
+    //  this.store.dispatch(addItems(
+    //   {items: data}
+    //  ))
     })
   }
 

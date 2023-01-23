@@ -20,14 +20,15 @@ export class ImgComponent  {
  @Input() productAlt : string = ''
 
  constructor(){
-  console.log(this.productImg)
 }
 
  @Output() loaded = new EventEmitter<string>() 
 //  counter = 0;
 //  counterFn: number | undefined;
   ngOnInit(){
-    console.log(this.productImg)
+    if(this.productImg.length === 0 || this.productImg === undefined || this.productImg === 'string'){
+      this.productImg = "https://i.pinimg.com/474x/88/c6/43/88c643c969e350f687f724e9742733c9.jpg";
+    }
   }
   imageDefault = 'pepe'
 

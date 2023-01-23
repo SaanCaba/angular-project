@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { StoreService } from 'src/app/services/store.service';
 import { addItemToCart, calculatePrice } from 'src/app/state/actions/items.actions';
 import { Product } from './product.model';
-
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -16,7 +15,7 @@ export class ProductComponent {
   @Input() product : Product = {
     title:'',
     price: 0,
-    image:[],
+    images:[],
     description: '',
     category:{
       id: 0,
@@ -28,9 +27,10 @@ export class ProductComponent {
     private storeService : StoreService,
     private store : Store
   ){
-    console.log(this.product)
   }
   ngOnInit(){
+    console.log(this.product.images)
+   
   }
   addProduct(){
     this.store.dispatch(addItemToCart({item : this.product}))

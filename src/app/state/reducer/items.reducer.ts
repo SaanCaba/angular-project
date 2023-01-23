@@ -1,7 +1,7 @@
 import { state } from '@angular/animations';
 import { createReducer, on } from '@ngrx/store';
 import { ItemState } from 'src/app/models/item.state';
-import { increment, decrement,reset, addItems, calculatePrice, addItemToCart } from '../actions/items.actions';
+import {  addItems, calculatePrice, addItemToCart } from '../actions/items.actions';
 
 export const initialState : ItemState = {
     items: [],

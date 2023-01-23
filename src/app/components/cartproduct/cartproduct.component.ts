@@ -10,7 +10,7 @@ export class CartproductComponent {
   @Input() product : Product = {
     title:'',
     price: 0,
-    image:[],
+    images:[],
     description: '',
     category: {
       id:0,

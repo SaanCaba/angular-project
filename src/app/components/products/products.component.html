@@ -15,16 +15,15 @@
 <p>
     {{'saantyc' | reverse }}
 </p> -->
-<div *ngIf="x.length > 0">
-<app-product
-(addedProduct)="onAddToCart($event)"
- [product]="item"
- *ngFor="let item of items$ | async">
-</app-product>
+<div class="product-cont">
+    <app-product
+    (addedProduct)="onAddToCart($event)"
+     [product]="item"
+     *ngFor="let item of products">
+    </app-product>
 </div>
-<div *ngIf="x.length === 0">
-Cargando...
-</div>
+
+
 <!-- <div class="product-cont"  >
     <app-product
      (addedProduct)="onAddToCart($event)"

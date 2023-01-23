@@ -16,7 +16,7 @@ export class CartComponent {
   @Output() cart = new EventEmitter<boolean>()
   @Input() product: Product = {
     title :'',
-    image: [],
+    images: [],
     price : 0,
     description: '',
     category: {

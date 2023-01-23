@@ -2,7 +2,10 @@
 <div  class="cont-product">
     <div class="cont-product-col">
         <div class="cont-img-product">
-            <app-img *ngIf="product.image.length !== 0"  [productImg]="product.image[0]" [productAlt]="product.title" ></app-img>
+            <app-img *ngIf="product.images !== undefined; else elseBlock"  [productImg]="product.images[0]" [productAlt]="product.title" ></app-img>
+            <ng-template #elseBlock>
+                    CARGANDO...
+            </ng-template>
         </div>
     <div class="cont-product-col">
         <p>{{product.price | currency:'ARS'}}</p>
