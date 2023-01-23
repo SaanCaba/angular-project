@@ -12,7 +12,9 @@ export class ProductComponent {
 
   // @Input('product') product!:Product 
   @Output() addedProduct = new EventEmitter<Product>();
+  @Output() showdetailP = new EventEmitter();
   @Input() product : Product = {
+    id: undefined,
     title:'',
     price: 0,
     images:[],
@@ -23,18 +25,23 @@ export class ProductComponent {
       name:''
     }
   }
+  showDetailProductB : boolean = false;
   constructor(
     private storeService : StoreService,
     private store : Store
   ){
   }
   ngOnInit(){
-    console.log(this.product.images)
    
   }
   addProduct(){
     this.store.dispatch(addItemToCart({item : this.product}))
     this.store.dispatch(calculatePrice());
+  }
+  showDetailProduct(){
+    console.log('pepe')
+    this.showDetailProductB = !this.showDetailProductB;
+    this.showdetailP.emit({menu :this.showDetailProductB, id: this.product.id})
   }
   
 

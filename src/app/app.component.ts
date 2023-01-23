@@ -23,7 +23,6 @@ export class AppComponent {
   }
   ngOnInit():void{
     // console.log(this.storeService.clickCart())
-    console.log(this.showCart)
   }
   clickCart(value: any){
     this.showCart = value;

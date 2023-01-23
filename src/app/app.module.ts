@@ -20,7 +20,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ROOT_REDUCERS } from './state/app.state';
 import { TruncPipe } from './pipes/trunc.pipe';
 import { SlicePipe } from './pipes/slice.pipe';
-
+import { SwiperModule } from 'swiper/angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +42,7 @@ import { SlicePipe } from './pipes/slice.pipe';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    SwiperModule,
     // vinculamos el reducer con la store
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ name: 'TEST' })

@@ -1,3 +1,4 @@
+
 .box{
     width: 100px;
     height: 100px;
@@ -28,8 +29,7 @@
 }
 
 .message-error{
-    /* background-color: rgb(225, 103, 103);
-    color: white; */
+    
     opacity: 0;
 }
 
