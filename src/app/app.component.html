@@ -2,8 +2,10 @@
 <div class="cart-view" [ngClass]="{showCart: showCart}">
   <app-cart (cart)="clickCart($event)"></app-cart>
 </div>
+<button (click)="createUser()">crear</button>
+<button (click)="login()">login</button>
 
-<app-products></app-products>
+  <app-products></app-products>
 
 <!-- <p>
   <input type="text" [(ngModel)]="imgParent">

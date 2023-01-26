@@ -22,6 +22,8 @@ h2{
 }
 
 .cont-product{
+    margin-top: 15px;
+    margin-bottom: 15px;
     display: flex;
     justify-content: center;
     padding: 20px;

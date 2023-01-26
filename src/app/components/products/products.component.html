@@ -15,9 +15,13 @@
 <p>
     {{'saantyc' | reverse }}
 </p> -->
+<!-- <button (click)="createNewProduct()">click</button> -->
+
 <div *ngIf="products.length === 0" class="cont-spinner">
    <div class="load-spinner"></div>
 </div>
+<div class="product__cont--father">
+
 <div class="product-cont" >
     <app-product
     (showdetailP)="toggleProductDetail($event)"
@@ -26,11 +30,17 @@
      *ngFor="let item of products">
     </app-product>
 </div>
+</div>
+<div>
+    <button class="btn__loadmore" (click)="loadMore()">Load More</button>
+</div>
+
 <div class="product-detail" [class.active]="showDetail">
     <div *ngIf="productChoosen" class="cont-detailproductscreen">
         <button (click)="onCloseDetail()" class="btn-detail">Close</button>
         <app-productdetail [productDetail]="productChoosen"></app-productdetail>
     </div>
 </div>
+
 
 

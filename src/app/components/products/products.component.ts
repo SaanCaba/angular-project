@@ -6,7 +6,7 @@ import { StoreService } from 'src/app/services/store.service';
 import { addItems, increment } from 'src/app/state/actions/items.actions';
 import { AppState } from 'src/app/state/app.state';
 import { selectItems } from 'src/app/state/selectors/items.selector';
-import { Product } from '../product/product.model';
+import { CreateProductDTO, Product } from '../product/product.model';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 // install Swiper modules
@@ -28,6 +28,8 @@ export class ProductsComponent {
   today  = new Date();
   date = new Date(2021, 1 ,21)
   showDetail: boolean = false;
+  errorMessage: string = '';
+  statusDetail : 'loading' | 'success' | 'error' | 'init' = 'init';
   productChoosen: Product = {
     id: undefined,
     title:'',
@@ -40,6 +42,8 @@ export class ProductsComponent {
       name:''
     }
   }
+  limit:number = 10;
+  offset: number = 0;
   constructor(
     private storeService: StoreService,
     private productsService : ProductsService,
@@ -51,18 +55,26 @@ export class ProductsComponent {
   addToCount(){
     this.store.dispatch(increment());
   }
+  chargeProducts(){
+    this.productsService.getProductsByPage(this.limit, this.offset)
+    .subscribe(data => {
+     this.products = data;
+    }, error =>{
+      this.errorMessage = error.message
+      console.log(error.message)
+    })
+  }
   ngOnInit(): void{
   
   // this.items$ = this.store.select(selectItems)
   // se dispara una acción!
 
-    this.productsService.getAllProducts()
-    .subscribe(data => {
-     this.products = data;
+    // this.productsService.getAllProducts()
+    this.chargeProducts();
     //  this.store.dispatch(addItems(
     //   {items: data}
     //  ))
-    })
+    
   }
 
   onAddToCart(product : Product){
@@ -71,15 +83,44 @@ export class ProductsComponent {
   }
 
   toggleProductDetail(value:string){
-    
+    this.statusDetail = 'loading';
     this.productsService.getDetailOfProduct(value)
-    .subscribe(data => 
+    .subscribe(data => {
       this.productChoosen = data
-    )
+      this.statusDetail = 'success'
+    }, error => {
+      console.log(error.error.message)
+      alert(error.error.message)
+      this.statusDetail = 'error'
+    })
     this.onCloseDetail();
   }
   onCloseDetail(){
     this.showDetail = !this.showDetail;
+  }
+
+  createNewProduct(){
+    const product : CreateProductDTO = {
+      title:'dsad',
+      price: 110,
+      images:[`https://placeimg.com/640/480/any?random=${Math.random()}`],
+      description: 'dsadsaxsadsad',
+      categoryId:2
+    }
+    this.productsService.createProduct(product)
+    .subscribe(data => {
+      console.log(data)
+      this.products = [data, ...this.products]
+    })
+  }
+
+  loadMore(){
+    this.offset += 1;
+    this.productsService.getProductsByPage(this.limit, this.offset)
+    .subscribe(data => {
+    
+    this.products = this.products.concat(data);
+    })
   }
 
 }
