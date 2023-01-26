@@ -56,10 +56,17 @@ export class AppComponent {
     this.authService.login('daoskdosad@gmail.com', "pepeargento")
     .subscribe(response => {
       console.log(response.access_token)
-      window.localStorage.setItem('userToken', response.access_token)
+      window.sessionStorage.setItem('userToken', response.access_token)
     }, error => {
       alert(error)
     })
-  }
 
+    
+  }
+  getProfile(){
+    this.authService.profile(window.sessionStorage.getItem('userToken'))
+    .subscribe(profile => {
+      console.log(profile)
+    });
+  }
 }

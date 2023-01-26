@@ -34,7 +34,17 @@
             </ul>
         </nav>
         <div class="info">
-            <div class="account">saantyc12.caballero@gmail.com</div>
+            <div *ngIf="userIsLogged; else elseBlock" class="account">{{userInfo.email}}</div>
+            <ng-template #elseBlock>
+                <div>
+                    <input [(ngModel)]="userInfo.name" placeholder="Name..." type="text">
+                    <input [(ngModel)]="userInfo.password" placeholder="Password" type="password">
+                    <input [(ngModel)]="userInfo.email" placeholder="Email" type="email">
+                </div>
+            </ng-template>
+            <button (click)="createUser()">crear</button>
+<button (click)="login(userInfo)">login</button>
+<button (click)="getProfile()">profile</button>
             <div>
                 <img (click)="openCart()" width="50" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="logo">
               <span>{{counter}}</span>  
