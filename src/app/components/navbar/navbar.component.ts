@@ -41,6 +41,7 @@ export class NavbarComponent {
     private token: TokenService,
     private usersService: UsersService
   ){
+    console.log(this.userIsLogged)
     if(window.sessionStorage.getItem('userToken')){
       console.log(window.sessionStorage.getItem('userToken'))
       console.log('first')
@@ -49,6 +50,8 @@ export class NavbarComponent {
       if(window.sessionStorage.getItem('emailUser') !== null){}
       this.userInfo.email = window.sessionStorage.getItem('emailUser')
     }
+    console.log(this.userIsLogged)
+
   }
   ngOnInit():void{
 
@@ -93,6 +96,12 @@ export class NavbarComponent {
     })
 
     
+  }
+
+  logout(){
+    window.sessionStorage.removeItem('userToken')
+    window.sessionStorage.removeItem('emailUser') 
+    this.userIsLogged = false;
   }
   getProfile(){
     this.authService.profile(window.sessionStorage.getItem('userToken'))
