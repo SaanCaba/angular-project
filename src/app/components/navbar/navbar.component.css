@@ -88,6 +88,9 @@
             width: 100%;
             backdrop-filter: blur(1.5px);
             padding: 1em;
+            box-shadow: .3px 3px 3px 0px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 1px 3px 3px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 1px 3px 3px 0px rgba(0,0,0,0.75);
             display: flex;
             justify-content: space-between;
             align-items: center;

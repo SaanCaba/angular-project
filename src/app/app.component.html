@@ -2,11 +2,15 @@
 <div class="cart-view" [ngClass]="{showCart: showCart}">
   <app-cart (cart)="clickCart($event)"></app-cart>
 </div>
+<router-outlet></router-outlet>
 <!-- <button (click)="createUser()">crear</button>
 <button (click)="login()">login</button>
 <button (click)="getProfile()">profile</button> -->
-  <app-products></app-products>
-
+<!-- <button (click)="downloadFile()">Descargar PDF</button>
+<input type="file" (change)="onUpload($event)"> -->
+<!-- <img *ngIf="img.length > 0" [src]="img" alt=""> -->
+<!-- <app-products></app-products> -->
+  
 <!-- <p>
   <input type="text" [(ngModel)]="imgParent">
   <input type="text" [(ngModel)]="prueba">

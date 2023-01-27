@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Observer } from 'rxjs';
 import { ProductsService } from 'src/app/services/products.service';
@@ -21,14 +21,14 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 })
 export class ProductsComponent {
   items$: Observable<any> = new Observable()
-  products: Product[] = [];
+  @Input() products: Product[] = [];
+  @Output() loadData = new EventEmitter();
   myCartProducts : Product[] = [];
   price$:Observable<any> = new Observable()
   productsLoaded : boolean = false;
   today  = new Date();
   date = new Date(2021, 1 ,21)
   showDetail: boolean = false;
-  errorMessage: string = '';
   statusDetail : 'loading' | 'success' | 'error' | 'init' = 'init';
   productChoosen: Product = {
     id: undefined,
@@ -42,8 +42,7 @@ export class ProductsComponent {
       name:''
     }
   }
-  limit:number = 10;
-  offset: number = 0;
+
   constructor(
     private storeService: StoreService,
     private productsService : ProductsService,
@@ -55,30 +54,8 @@ export class ProductsComponent {
   addToCount(){
     this.store.dispatch(increment());
   }
-  chargeProducts(){
-    this.productsService.getProductsByPage(this.limit, this.offset)
-    .subscribe(data => {
-     this.products = data;
-    }, error =>{
-      this.errorMessage = error.message
-      console.log(error.message)
-    })
-  }
-  ngOnInit(): void{
-  
-  // this.items$ = this.store.select(selectItems)
-  // se dispara una acción!
-
-    // this.productsService.getAllProducts()
-    this.chargeProducts();
-    //  this.store.dispatch(addItems(
-    //   {items: data}
-    //  ))
-    
-  }
 
   onAddToCart(product : Product){
-    // console.log(product)
     this.storeService.addProduct(product)
   }
 
@@ -114,13 +91,8 @@ export class ProductsComponent {
     })
   }
 
-  loadMore(){
-    this.offset += 1;
-    this.productsService.getProductsByPage(this.limit, this.offset)
-    .subscribe(data => {
-    
-    this.products = this.products.concat(data);
-    })
+  chargeMoreProducts(){
+    this.loadData.emit();
   }
 
 }

@@ -20,46 +20,27 @@ export class NavbarComponent {
   showMenu:boolean = false;
   counter: number = 0;
   showCart: boolean = false;
-  userIsLogged: boolean = false;
   userInfo: User = {
     id: '',
     name : '',
     email: '',
     password : ''
   }
-  // inputInfo : User = {
-  //   id: 'dasd',
-  //   name:'',
-  //   password: '',
-  //   email: '',
-  // }
-
   constructor(
     private storeService : StoreService,
     private store: Store<AppState>,
     private authService: AuthService,
-    private token: TokenService,
+    public token: TokenService,
     private usersService: UsersService
   ){
-    console.log(this.userIsLogged)
-    if(window.sessionStorage.getItem('userToken')){
-      console.log(window.sessionStorage.getItem('userToken'))
-      console.log('first')
-      this.userIsLogged = true;
-      console.log(this.userIsLogged)
-      if(window.sessionStorage.getItem('emailUser') !== null){}
       this.userInfo.email = window.sessionStorage.getItem('emailUser')
-    }
-    console.log(this.userIsLogged)
-
   }
   ngOnInit():void{
 
-   let pepe  = this.store.select(selectMyCartProducts);
-   pepe.subscribe(products   => {
+   let myCartP  = this.store.select(selectMyCartProducts);
+   myCartP.subscribe(products   => {
     this.counter = products.length;
    });
-   console.log(pepe)
   }
   toggleMenu(){
     console.log(this.showMenu)
@@ -85,28 +66,26 @@ export class NavbarComponent {
 
   login(userInfo: User){
     console.log(userInfo)
-    this.authService.login(userInfo.email, userInfo.password)
+    this.authService.login(userInfo.name, userInfo.email, userInfo.password)
     .subscribe(response => {
       console.log(response.access_token)
-      window.sessionStorage.setItem('userToken', response.access_token)
       window.sessionStorage.setItem('emailUser', userInfo.email)
-      this.userIsLogged = true;
     }, error => {
-      alert(error)
+      alert(error.message)
     })
 
     
   }
 
   logout(){
-    window.sessionStorage.removeItem('userToken')
+    this.token.removeToken()
     window.sessionStorage.removeItem('emailUser') 
-    this.userIsLogged = false;
   }
   getProfile(){
-    this.authService.profile(window.sessionStorage.getItem('userToken'))
+    this.authService.profile()
     .subscribe(profile => {
       console.log(profile)
+      this.userInfo = profile;
     });
   }
 

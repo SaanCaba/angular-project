@@ -1,6 +1,7 @@
 import { Component, Output } from '@angular/core';
 import { Product } from './product.model';
 import { AuthService } from './services/auth.service';
+import { FilesService } from './services/files.service';
 import { StoreService } from './services/store.service';
 import { TokenService } from './services/token.service';
 import { UsersService } from './services/users.service';
@@ -15,6 +16,7 @@ export class AppComponent {
   prueba=''
   showIMG = true
   showCart: boolean = false;
+  img:string='';
   onLoaded(img : string){
     console.log('loaded padre!', img)
   }
@@ -23,7 +25,8 @@ export class AppComponent {
     private storeService : StoreService,
     private tokenService : TokenService,
     private authService : AuthService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private filesService : FilesService
   ){
 
   }
@@ -38,35 +41,19 @@ export class AppComponent {
     const element = e.target as HTMLElement
     console.log(element.scrollTop)
   }
-
-  createUser(){
-    this.usersService.createUser({
-      name:"Santi",
-      email:"daoskdosad@gmail.com",
-      password:"pepeargento"
-    })
-    .subscribe(response => {
-      console.log(response)
-    }, error => {
-      alert(error)
-    })
+  downloadFile(){
+    this.filesService.getFile("my.pdf", "https://young-sands-07814.herokuapp.com/api/files/dummy.pdf", "application/pdf")
+    .subscribe()
   }
 
-  login(){
-    this.authService.login('daoskdosad@gmail.com', "pepeargento")
-    .subscribe(response => {
-      console.log(response.access_token)
-      window.sessionStorage.setItem('userToken', response.access_token)
-    }, error => {
-      alert(error)
-    })
-
-    
-  }
-  getProfile(){
-    this.authService.profile(window.sessionStorage.getItem('userToken'))
-    .subscribe(profile => {
-      console.log(profile)
-    });
+  onUpload(e : Event){
+    const element = event?.target as HTMLInputElement;
+    const file = element.files?.item(0)
+    if(file){
+      this.filesService.uploadFile(file)
+      .subscribe(rta => {
+        this.img = rta.location
+      })
+    }
   }
 }

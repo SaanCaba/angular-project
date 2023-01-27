@@ -34,7 +34,7 @@
             </ul>
         </nav>
         <div class="info">
-            <div *ngIf="userIsLogged; else elseBlock" class="account">
+            <div *ngIf="token.getToken(); else elseBlock" class="account">
                 {{userInfo.email}}
                 <button (click)="getProfile()">profile</button>
                 <button (click)="logout()">Logout</button>

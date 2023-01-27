@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, retry, throwError } from 'rxjs';
 import { CreateProductDTO } from '../components/product/product.model';
+import { checkTime } from '../interceptors/time.interceptor';
 import { Product } from '../product.model';
 
 
@@ -10,13 +11,13 @@ import { Product } from '../product.model';
 })
 export class ProductsService {
 
-  private apiUrl : string = 'https://young-sands-07814.herokuapp.com/api/products/'
+  private apiUrl : string = 'https://damp-spire-59848.herokuapp.com/api/products/'
   constructor(
     private http: HttpClient
   ) { }
 
   getAllProducts(){
-   return this.http.get<Product[]>(this.apiUrl)
+   return this.http.get<Product[]>(this.apiUrl,{context:checkTime()})
    .pipe(
    catchError((error : HttpErrorResponse) =>{
     if(error.status === 500){
@@ -35,7 +36,8 @@ export class ProductsService {
     return this.http.get<Product[]>(this.apiUrl, {
       params:{
         limit, offset
-      }
+      },
+      context:checkTime()
     });
   }
 
