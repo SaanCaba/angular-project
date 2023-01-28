@@ -31,6 +31,16 @@ export class ProductsService {
    })
    );
   }
+
+  getProductByCategory(id: string|null, limit:number, offset:number){
+    return this.http.get<Product[]>('https://damp-spire-59848.herokuapp.com/api/categories/'+id+'/products', {
+      params:{
+        limit, offset
+      },
+      context:checkTime()
+    });
+  }
+
   //paginado
   getProductsByPage(limit:number, offset:number){
     return this.http.get<Product[]>(this.apiUrl, {

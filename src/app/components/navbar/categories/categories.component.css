@@ -1,0 +1,9 @@
+.category__name{
+    font-weight: bold;
+    
+}
+
+.category__name > a {
+    text-decoration: none;
+    color: black;
+}

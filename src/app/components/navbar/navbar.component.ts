@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { Product } from 'src/app/product.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { Categories, CategoriesService } from 'src/app/services/categories.service';
 import { StoreService } from 'src/app/services/store.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UsersService } from 'src/app/services/users.service';
@@ -20,6 +21,7 @@ export class NavbarComponent {
   showMenu:boolean = false;
   counter: number = 0;
   showCart: boolean = false;
+  categories: Categories[] = []
   userInfo: User = {
     id: '',
     name : '',
@@ -31,7 +33,8 @@ export class NavbarComponent {
     private store: Store<AppState>,
     private authService: AuthService,
     public token: TokenService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private categoriesService: CategoriesService
   ){
       this.userInfo.email = window.sessionStorage.getItem('emailUser')
   }
@@ -41,6 +44,11 @@ export class NavbarComponent {
    myCartP.subscribe(products   => {
     this.counter = products.length;
    });
+   this.categoriesService.getCategories()
+   .subscribe(data =>{
+    console.log(data)
+    this.categories = data
+   })
   }
   toggleMenu(){
     console.log(this.showMenu)
