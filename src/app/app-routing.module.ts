@@ -24,10 +24,6 @@ const routes: Routes = [
     component: CategoryComponent
   },
   {
-    path:'notfound',
-    component: NotFoundComponent
-  },
-  {
     path:'login',
     component: LoginComponent
   },
@@ -47,6 +43,10 @@ const routes: Routes = [
     path:'profile',
     component: ProfileComponent
   },
+  {
+    path:'**',
+    component: NotFoundComponent
+  }
 
 ];
 

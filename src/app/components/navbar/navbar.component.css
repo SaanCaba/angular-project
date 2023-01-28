@@ -151,9 +151,10 @@ a{
         }
         .items{
             display: flex;
+            width: 600px;
+            justify-content: center;
             list-style: none;
             gap: 20px;
-            margin-left: 20px;
         }
         .account{
             margin-right: 19px;
