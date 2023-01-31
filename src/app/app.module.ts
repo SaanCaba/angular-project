@@ -21,7 +21,7 @@ import { ROOT_REDUCERS } from './state/app.state';
 import { TruncPipe } from './pipes/trunc.pipe';
 import { SlicePipe } from './pipes/slice.pipe';
 import { SwiperModule } from 'swiper/angular';
-import { ProductdetailComponent } from './components/productdetail/productdetail.component';
+// import { ProductdetailComponent } from './components/productdetail/productdetail.component';
 import { TimeInterceptor } from './interceptors/time.interceptor';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { HomeComponent } from './pages/home/home.component';
@@ -33,6 +33,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CategoriesComponent } from './components/navbar/categories/categories.component';
+import { ProductdetailComponent } from './pages/productdetail/productdetail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
